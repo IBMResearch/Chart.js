@@ -16,6 +16,26 @@ const banner = `/*!
  */`;
 
 module.exports = [
+	// ESM build (excluding moment)
+	// dist/Chart.esm.js
+	{
+		input: input,
+		plugins: [
+			resolve(),
+			commonjs(),
+			stylesheet({
+				extract: true
+			}),
+		],
+		output: {
+			name: 'Chart',
+			file: 'dist/Chart.esm.js',
+			banner: banner,
+			format: 'esm',
+			indent: false,
+		}
+	},
+
 	// UMD builds (excluding moment)
 	// dist/Chart.min.js
 	// dist/Chart.js
